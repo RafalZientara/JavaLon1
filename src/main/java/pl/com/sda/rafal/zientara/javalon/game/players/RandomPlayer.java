@@ -12,6 +12,11 @@ public class RandomPlayer implements Player {
         return getGameActionFromSwitch(output);
     }
 
+    @Override
+    public String getNick() {
+        return "Random guy";
+    }
+
     private GameAction getGameActionFromSwitch(int output) {
         switch (output) {
             case 0:
@@ -32,5 +37,4 @@ public class RandomPlayer implements Player {
             return GameAction.SCISSORS;
         }
     }
-
 }

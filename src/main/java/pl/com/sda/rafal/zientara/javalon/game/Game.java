@@ -14,8 +14,8 @@ public class Game {
     public void startGame() {
         GameAction action1 = player1.chooseAction();
         GameAction action2 = player2.chooseAction();
-        System.out.println("Player 1 action: " + action1);
-        System.out.println("Player 2 action: " + action2);
+        System.out.println(player1.getNick() + " action: " + action1);
+        System.out.println(player2.getNick() + " action: " + action2);
         GameResult result = checkResult(action1, action2);
         printGameResult(result);
     }
@@ -23,10 +23,10 @@ public class Game {
     private void printGameResult(GameResult result) {
         switch (result) {
             case PLAYER_1_WIN:
-                System.out.println("Player 1 WINS!");
+                System.out.println(player1.getNick() + " WINS!");
                 break;
             case PLAYER_2_WIN:
-                System.out.println("Player 2 WINS!");
+                System.out.println(player2.getNick() + " WINS!");
                 break;
             case TIE:
                 System.out.println("Tie!");

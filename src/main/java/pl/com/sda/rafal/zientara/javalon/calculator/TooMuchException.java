@@ -8,4 +8,5 @@ public class TooMuchException extends RuntimeException {
     public TooMuchException(String message) {
         super(message);
     }
+
 }

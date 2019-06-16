@@ -14,6 +14,11 @@ public class ScannerPlayer implements Player {
         return getGameActionWithWhileAndSwitch(scanner);
     }
 
+    @Override
+    public String getNick() {
+        return "Scanner";
+    }
+
     private GameAction getGameActionWithWhileAndSwitch(Scanner scanner) {
         while (true) {
             String input = scanner

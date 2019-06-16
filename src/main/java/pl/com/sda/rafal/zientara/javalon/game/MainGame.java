@@ -11,6 +11,11 @@ public class MainGame {
             public GameAction chooseAction() {
                 return GameAction.SCISSORS;
             }
+
+            @Override
+            public String getNick() {
+                return "Gal anonim";
+            }
         };*/
         Player player1 = new ScannerPlayer();
         Player player2 = new RandomPlayer();

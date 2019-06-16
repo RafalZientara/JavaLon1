@@ -8,4 +8,9 @@ public class StonedPlayer implements Player {
         return GameAction.ROCK;
     }
 
+    @Override
+    public String getNick() {
+        return "Snoop dog";
+    }
+
 }
