@@ -2,6 +2,7 @@ package pl.com.sda.rafal.zientara.javalon;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import pl.com.sda.rafal.zientara.javalon.game.MainGame;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -118,10 +119,25 @@ class UtilsTest {
         int searchNumber = 10;
 
         //when then
-        assertThrows(IllegalAccessError.class, new Executable() {
+        assertThrows(NumberNotSupported.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                //todo cos so ma eksplodowac
+                Utils.getNumberCount(input, searchNumber);
+            }
+        });
+    }
+
+    @Test
+    public void getNumberOfDigitLessThan0WillThrow() {
+        //given
+        String input = "345675";
+        int searchNumber = -1;
+
+        //when then
+        assertThrows(NumberNotSupported.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                Utils.getNumberCount(input, searchNumber);
             }
         });
     }

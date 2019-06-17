@@ -17,4 +17,12 @@ public class Calculator {
     public int divide(int a, int b) {
         return a / b;
     }
+
+    public int multiple(int a, int b) {
+        return a * b;
+    }
+
+    public int modulo(int a, int b) {
+        return a % b;
+    }
 }

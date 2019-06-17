@@ -16,11 +16,12 @@ class CalculatorTest {
         int b = 3;
 
         // when
-        int output = calculator.sum(a,b);
+        int output = calculator.sum(a, b);
 
         // then
         assertEquals(5, output);
     }
+
     @Test
     public void sumBigTwoNumbersShouldThrows() {
         // given
@@ -32,7 +33,7 @@ class CalculatorTest {
         assertThrows(TooMuchException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                calculator.sum(a,b);
+                calculator.sum(a, b);
             }
         });
     }
@@ -45,7 +46,7 @@ class CalculatorTest {
         int b = 3;
 
         // when
-        int output = calculator.subtraction(a,b);
+        int output = calculator.subtraction(a, b);
 
         // then
         assertEquals(-1, output);
@@ -59,13 +60,40 @@ class CalculatorTest {
         int b = 2;
 
         // when
-        int output = calculator.divide(a,b);
+        int output = calculator.divide(a, b);
 
         // then
         assertEquals(2, output);
     }
 
-    //todo *
+    @Test
+    public void multipleTwoNumbers() {
+        // given
+        Calculator calculator = new Calculator();
+        int a = 5;
+        int b = 2;
+
+        // when
+        int output = calculator.multiple(a, b);
+
+        // then
+        assertEquals(10, output);
+    }
+
+    @Test
+    public void moduloTwoNumbers() {
+        // given
+        Calculator calculator = new Calculator();
+        int a = 5;
+        int b = 2;
+
+        // when
+        int output = calculator.modulo(a, b);
+
+        // then
+        assertEquals(1, output);
+    }
+
     //todo %
 
 
