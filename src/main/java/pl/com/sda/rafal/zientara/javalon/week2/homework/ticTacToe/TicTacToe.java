@@ -50,6 +50,8 @@ public class TicTacToe {
             if (i < 2)
                 System.out.println("---+---+---");
         }
+
+        System.out.println();
     }
 
     private String fieldToString(int row, int col) {
@@ -65,12 +67,39 @@ public class TicTacToe {
     }
 
     public GameResult getResult() {
-        if (checkWantedMarkHorizontally(FIELD_X))
+        if (checkWantedMarkHorizontally(FIELD_X) ||
+                checkWantedMarkVertically(FIELD_X) ||
+                checkWantedMarkDiagonal(FIELD_X) ||
+                checkWantedMarkDiagonalNegative(FIELD_X))
             return GameResult.PLAYER_X_WIN;
-        if (checkWantedMarkHorizontally(FIELD_O))
+        if (checkWantedMarkHorizontally(FIELD_O) ||
+                checkWantedMarkVertically(FIELD_O) ||
+                checkWantedMarkDiagonal(FIELD_O) ||
+                checkWantedMarkDiagonalNegative(FIELD_O))
             return GameResult.PLAYER_O_WIN;
 
+        if (isBoardFull()) {
+            return GameResult.DRAW;
+        }
+
         return GameResult.PENDING;
+    }
+
+    private boolean isBoardFull() {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (field[i][j] != TicTacToe.FIELD_EMPTY) {
+                    count++;
+                }
+            }
+        }
+        return count == 9;
+//        if (count == 9) {
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 
     private boolean checkWantedMarkHorizontally(int wantedMark) {
@@ -80,6 +109,35 @@ public class TicTacToe {
                     field[i][2] == wantedMark) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    private boolean checkWantedMarkVertically(int wantedMark) {
+        for (int i = 0; i < 3; i++) {
+            if (field[0][i] == wantedMark &&
+                    field[1][i] == wantedMark &&
+                    field[2][i] == wantedMark) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkWantedMarkDiagonal(int wantedMark) {
+        if (field[0][2] == wantedMark &&
+                field[1][1] == wantedMark &&
+                field[2][0] == wantedMark) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkWantedMarkDiagonalNegative(int wantedMark) {
+        if (field[0][0] == wantedMark &&
+                field[1][1] == wantedMark &&
+                field[2][2] == wantedMark) {
+            return true;
         }
         return false;
     }

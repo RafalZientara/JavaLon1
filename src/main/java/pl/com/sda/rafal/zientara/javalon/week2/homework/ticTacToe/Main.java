@@ -17,6 +17,17 @@ public class Main {
             makeMove(game);
             game.printBoard();
         }
+        switch (game.getResult()) {
+            case PLAYER_O_WIN:
+                System.out.println("O Wins!");
+                break;
+            case PLAYER_X_WIN:
+                System.out.println("X Wins!");
+                break;
+            case DRAW:
+                System.out.println("Tie!");
+                break;
+        }
     }
 
     private static void printHelp() {
