@@ -38,6 +38,12 @@ class ListUtilsTest {
         //when
         List<Integer> numbers = source.stream()
                 .filter(n -> n %2 == 1)
+                /*.filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer n) {
+                        return false;
+                    }
+                })*/
                 .map(n -> n * 100)
                 .collect(Collectors.toList());
 
