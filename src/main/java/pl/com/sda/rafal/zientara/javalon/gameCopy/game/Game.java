@@ -1,5 +1,6 @@
 package pl.com.sda.rafal.zientara.javalon.gameCopy.game;
 
+
 import pl.com.sda.rafal.zientara.javalon.gameCopy.game.players.AbstractPlayer;
 
 public class Game {

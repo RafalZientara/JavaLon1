@@ -23,6 +23,10 @@ public class TicTacToe {
     }
 
     public void addMark(int row, int col) {
+        if (getFieldStatus(row, col) != TicTacToe.FIELD_EMPTY) {
+            throw new FieldOcuppiedException();
+        }
+
         if (isPlayerXTurn()) {
             field[row][col] = TicTacToe.FIELD_X;
         } else {
@@ -33,7 +37,50 @@ public class TicTacToe {
 //        field[row][col] = playerXTurn ? TicTacToe.FIELD_X : TicTacToe.FIELD_O;
 
         playerXTurn = !playerXTurn;
-
     }
 
+    public void printBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(fieldToString(i, j));
+                if (j < 2)
+                    System.out.print("|");
+            }
+            System.out.println();
+            if (i < 2)
+                System.out.println("---+---+---");
+        }
+    }
+
+    private String fieldToString(int row, int col) {
+        switch (getFieldStatus(row, col)) {
+            default:
+            case FIELD_EMPTY:
+                return "   ";
+            case FIELD_X:
+                return " X ";
+            case FIELD_O:
+                return " O ";
+        }
+    }
+
+    public GameResult getResult() {
+        if (checkWantedMarkHorizontally(FIELD_X))
+            return GameResult.PLAYER_X_WIN;
+        if (checkWantedMarkHorizontally(FIELD_O))
+            return GameResult.PLAYER_O_WIN;
+
+        return GameResult.PENDING;
+    }
+
+    private boolean checkWantedMarkHorizontally(int wantedMark) {
+        for (int i = 0; i < 3; i++) {
+            if (field[i][0] == wantedMark &&
+                    field[i][1] == wantedMark &&
+                    field[i][2] == wantedMark) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
