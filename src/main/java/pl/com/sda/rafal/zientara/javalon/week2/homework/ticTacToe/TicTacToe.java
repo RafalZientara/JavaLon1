@@ -23,6 +23,9 @@ public class TicTacToe {
     }
 
     public void addMark(int row, int col) {
+        if (getResult() != GameResult.PENDING) {//todo napisz test
+            throw new IllegalStateException("Game is finished!");
+        }
         if (getFieldStatus(row, col) != TicTacToe.FIELD_EMPTY) {
             throw new FieldOcuppiedException();
         }

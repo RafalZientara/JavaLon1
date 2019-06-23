@@ -2,17 +2,17 @@ package pl.com.sda.rafal.zientara.javalon.week2.homework.farm;
 
 import pl.com.sda.rafal.zientara.javalon.week2.homework.farm.animals.Cow;
 
-public class CowFarm extends OldMcDonaldFarm<Cow> {
+public class CowFarm<C extends Cow> extends OldMcDonaldFarm<C> {
 
     @Override
-    public Cow getAnimal(int i) {
+    public C getAnimal(int i) {
         return super.getAnimal(i);
     }
 
     public void milking() {
         int milk = 0;
 
-        for (Cow cow : animals) {
+        for (C cow : animals) {
             cow.makeSound();
             milk += cow.getMilk();
         }

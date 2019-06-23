@@ -25,7 +25,7 @@ public class OldMcDonaldFarm<T extends Animal> {
 
     public void printAllInfo() {
         System.out.println("Wszystkie zwierzêta");
-        for (Animal temp : animals) {
+        for (T temp : animals) {
             temp.printInfo();
         }
         System.out.println();
